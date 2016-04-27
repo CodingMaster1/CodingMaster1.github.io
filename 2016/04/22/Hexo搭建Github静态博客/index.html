@@ -1,0 +1,653 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo,Github," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Hexo搭建Github静态博客1. 安装GitGit官方下载地址：https://git-scm.com/download/
+2. 安装node.jsnode.js下载地址http://nodejs.org/download/安装时直接保持默认配置即可。
+3. 配置Github3.1 建立Repository建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo搭建Github静态博客">
+<meta property="og:url" content="http://codingmaster1.github.io/2016/04/22/Hexo搭建Github静态博客/index.html">
+<meta property="og:site_name" content="Go Big or Go Home">
+<meta property="og:description" content="Hexo搭建Github静态博客1. 安装GitGit官方下载地址：https://git-scm.com/download/
+2. 安装node.jsnode.js下载地址http://nodejs.org/download/安装时直接保持默认配置即可。
+3. 配置Github3.1 建立Repository建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io">
+<meta property="og:updated_time" content="2016-04-27T06:14:18.447Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo搭建Github静态博客">
+<meta name="twitter:description" content="Hexo搭建Github静态博客1. 安装GitGit官方下载地址：https://git-scm.com/download/
+2. 安装node.jsnode.js下载地址http://nodejs.org/download/安装时直接保持默认配置即可。
+3. 配置Github3.1 建立Repository建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Hexo搭建Github静态博客 | Go Big or Go Home </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Go Big or Go Home</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Note</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo搭建Github静态博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-22T16:00:21+08:00" content="2016-04-22">
+              2016-04-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Hexo搭建Github静态博客"><a href="#Hexo搭建Github静态博客" class="headerlink" title="Hexo搭建Github静态博客"></a>Hexo搭建Github静态博客</h1><h2 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1. 安装Git"></a>1. 安装Git</h2><p>Git官方下载地址：<a href="https://git-scm.com/download/" title="Git官方下载链接" target="_blank" rel="external">https://git-scm.com/download/</a></p>
+<h2 id="2-安装node-js"><a href="#2-安装node-js" class="headerlink" title="2. 安装node.js"></a>2. 安装node.js</h2><p>node.js下载地址<a href="http://nodejs.org/download/" title="node.js官网" target="_blank" rel="external">http://nodejs.org/download/</a><br>安装时直接保持默认配置即可。</p>
+<h2 id="3-配置Github"><a href="#3-配置Github" class="headerlink" title="3. 配置Github"></a>3. 配置Github</h2><h3 id="3-1-建立Repository"><a href="#3-1-建立Repository" class="headerlink" title="3.1 建立Repository"></a>3.1 建立Repository</h3><p>建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】</p>
+<h3 id="3-2-配置SSH-Key"><a href="#3-2-配置SSH-Key" class="headerlink" title="3.2 配置SSH-Key"></a>3.2 配置SSH-Key</h3><h2 id="4-安装Hexo"><a href="#4-安装Hexo" class="headerlink" title="4. 安装Hexo"></a>4. 安装Hexo</h2><h3 id="4-1-Installation"><a href="#4-1-Installation" class="headerlink" title="4.1 Installation"></a>4.1 Installation</h3><p>打开Git命令行，执行如下命令</p>
+<p><code>$ npm install -g hexo</code></p>
+<h3 id="4-2-Quick-Start"><a href="#4-2-Quick-Start" class="headerlink" title="4.2 Quick Start"></a>4.2 Quick Start</h3><h4 id="1-Setup-your-blog"><a href="#1-Setup-your-blog" class="headerlink" title="1.Setup your blog"></a>1.Setup your blog</h4><p>在电脑中建立一个名字叫「Hexo」的文件夹（比如我建在了D:\Hexo），然后在此文件夹中右键打开Git Bash。执行下面的命令</p>
+<pre><code>$ hexo init
+[info] Copying data
+[info] You are almost done! Don&apos;t forget to run npm install before you start b
+logging with Hexo!
+</code></pre><p>Hexo随后会自动在目标文件夹建立网站所需要的文件。然后按照提示，运行 npm install（在 /D/Hexo下）<br>    npm install</p>
+<p>会在D:\Hexo目录中安装 node_modules。</p>
+<p>####2. Start the server  ####<br>运行下面的命令（在 /D/Hexo下）</p>
+<pre><code>$ hexo server
+[info] Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
+</code></pre><p>表明Hexo Server已经启动了，在浏览器中打开 <a href="http://localhost:4000/，这时可以看到Hexo已为你生成了一篇blog。" target="_blank" rel="external">http://localhost:4000/，这时可以看到Hexo已为你生成了一篇blog。</a></p>
+<p>你可以按Ctrl+C 停止Server。</p>
+<h4 id="3-Create-a-new-post"><a href="#3-Create-a-new-post" class="headerlink" title="3. Create a new post"></a>3. Create a new post</h4><p>新打开一个git bash命令行窗口，cd到/D/Hexo下，执行下面的命令</p>
+<pre><code>$ hexo new &quot;My New Post&quot;
+[info] File created at d:\Hexo\source\_posts\My-New-Post.md
+</code></pre><p>刷新<a href="http://localhost:4000/，可以发现已生成了一篇新文章" target="_blank" rel="external">http://localhost:4000/，可以发现已生成了一篇新文章</a> “My New Post”。</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><p>有一个问题，发现 “My New Post” 被发了2遍，在Hexo server所在的git bash窗口也能看到create了2次。</p>
+<pre><code>$ hexo server
+[info] Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
+[create] d:\Hexo\source\_posts\My-New-Post.md
+[create] d:\Hexo\source\_posts\My-New-Post.md
+</code></pre><p>经验证，在hexo new “My New Post” 时，如果按Ctrl+C将hexo server停掉，就不会出现发2次的问题了。</p>
+<p>所以，在hexo new文章时，需要stop server。</p>
+<h4 id="4-Generate-static-files"><a href="#4-Generate-static-files" class="headerlink" title="4. Generate static files"></a>4. Generate static files</h4><p>执行下面的命令，将markdown文件生成静态网页。</p>
+<pre><code>$ hexo generate
+</code></pre><p>该命令执行完后，会在 D:\Hexo\public\ 目录下生成一系列html，css等文件。</p>
+<p>####5. 编辑文章  ####<br>hexo new “My New Post”会在D:\Hexo\source_posts目录下生成一个markdown文件：My-New-Post.md</p>
+<p>可以使用一个支持markdown语法的编辑器（比如 Sublime Text 2）来编辑该文件。</p>
+<h4 id="6-部署到Github"><a href="#6-部署到Github" class="headerlink" title="6. 部署到Github"></a>6. 部署到Github</h4><p>部署到Github前需要配置_config.yml文件，首先找到下面的内容</p>
+<pre><code># Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+ type:
+</code></pre><p>然后将它们修改为</p>
+<pre><code># Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+  type: github
+  repository: git@github.com:zhchnchn/zhchnchn.github.io.git
+  branch: master
+</code></pre><h4 id="7-测试"><a href="#7-测试" class="headerlink" title="7.测试"></a>7.测试</h4><p>当部署完成后，在浏览器中打开<a href="http://codingmaster1.github.io/（https://codingmaster1.github.io/）">http://codingmaster1.github.io/（https://codingmaster1.github.io/）</a> ，正常显示网页，表明部署成功。</p>
+<h4 id="8-总结：部署步骤"><a href="#8-总结：部署步骤" class="headerlink" title="8.总结：部署步骤"></a>8.总结：部署步骤</h4><p>每次部署的步骤，可按以下三步来进行。</p>
+<pre><code>hexo clean
+hexo generate
+hexo deploy
+</code></pre><p>##References ##<br>【1】Windows下Git安装指南（<a href="http://www.cnblogs.com/zhcncn/p/3787849.html）" target="_blank" rel="external">http://www.cnblogs.com/zhcncn/p/3787849.html）</a></p>
+<p>【2】Hexo （<a href="https://github.com/hexojs/hexo）" target="_blank" rel="external">https://github.com/hexojs/hexo）</a></p>
+<p>【3】hexo你的博客（<a href="http://ibruce.info/2013/11/22/hexo-your-blog/）" target="_blank" rel="external">http://ibruce.info/2013/11/22/hexo-your-blog/）</a></p>
+<p>【4】Hexo All Themes（<a href="https://github.com/hexojs/hexo/wiki/Themes）" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes）</a></p>
+<p>【5】Pacman主题介绍（<a href="http://yangjian.me/pacman/hello/introducing-pacman-theme/）" target="_blank" rel="external">http://yangjian.me/pacman/hello/introducing-pacman-theme/）</a></p>
+<p>【6】hexo添加404页面(<a href="http://ruocaiwu.github.io/2014/08/14/hexo%E6%B7%BB%E5%8A%A0404%E9%A1%B5%E9%9D%A2/" target="_blank" rel="external">http://ruocaiwu.github.io/2014/08/14/hexo%E6%B7%BB%E5%8A%A0404%E9%A1%B5%E9%9D%A2/</a>)</p>
+<p>【7】如何搭建一个独立博客——简明Github Pages与Hexo教程（<a href="http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/）" target="_blank" rel="external">http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/）</a></p>
+<p>【8】如何向google提交sitemap（详细）(<a href="http://fionat.github.io/blog/2013/10/23/sitemap/" target="_blank" rel="external">http://fionat.github.io/blog/2013/10/23/sitemap/</a>)</p>
+<p>【9】GitHub Ribbons(<a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">https://github.com/blog/273-github-ribbons</a>)</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward.png" alt="Austin Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+          
+            <a href="/tags/Github/" rel="tag">#Github</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/22/NBA/" rel="next" title="NBA">
+                <i class="fa fa-chevron-left"></i> NBA
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Austin" />
+          <p class="site-author-name" itemprop="name">Austin</p>
+          <p class="site-description motion-element" itemprop="description">Keep Moving</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/codingmaster1" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo搭建Github静态博客"><span class="nav-number">1.</span> <span class="nav-text">Hexo搭建Github静态博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装Git"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装node-js"><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-配置Github"><span class="nav-number">1.3.</span> <span class="nav-text">3. 配置Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-建立Repository"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 建立Repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-配置SSH-Key"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 配置SSH-Key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-安装Hexo"><span class="nav-number">1.4.</span> <span class="nav-text">4. 安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Installation"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 Installation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Quick-Start"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Setup-your-blog"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">1.Setup your blog</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Create-a-new-post"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">3. Create a new post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Note"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Generate-static-files"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">4. Generate static files</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-部署到Github"><span class="nav-number">1.4.2.5.</span> <span class="nav-text">6. 部署到Github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-测试"><span class="nav-number">1.4.2.6.</span> <span class="nav-text">7.测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-总结：部署步骤"><span class="nav-number">1.4.2.7.</span> <span class="nav-text">8.总结：部署步骤</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Austin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人数</span>
+  
+
+  
+    <span class="site-pv">本站总访问数<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
