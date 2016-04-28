@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nba," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,16 +80,21 @@
 
 
 
-<meta name="description" content="Keep Moving">
+<meta name="description" content="使用HTML5 Canvas Canvas是HTML5语言中最具创新和影响力的元素，尤其它是与数据可视化相关的。通过使用&amp;lt;Canvas&amp;gt;标记，设计师在web页面中创建了一块预留的任意区域，可以包含在运行时通过编程方式创建的图形。HTML5画布图形是有强大的JavaScript API提供的——大量的API目前都具有良好的跨浏览器支持，并且可以立即使用。
+使用&amp;lt;Canvas&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NBA">
-<meta property="og:url" content="http://codingmaster1.github.io/2016/04/22/NBA/index.html">
+<meta property="og:title" content="数据可视化">
+<meta property="og:url" content="http://codingmaster1.github.io/2016/04/28/数据可视化/index.html">
 <meta property="og:site_name" content="Go Big or Go Home">
-<meta property="og:description" content="Keep Moving">
-<meta property="og:updated_time" content="2016-04-22T06:45:24.636Z">
+<meta property="og:description" content="使用HTML5 Canvas Canvas是HTML5语言中最具创新和影响力的元素，尤其它是与数据可视化相关的。通过使用&amp;lt;Canvas&amp;gt;标记，设计师在web页面中创建了一块预留的任意区域，可以包含在运行时通过编程方式创建的图形。HTML5画布图形是有强大的JavaScript API提供的——大量的API目前都具有良好的跨浏览器支持，并且可以立即使用。
+使用&amp;lt;Canvas&amp;gt;">
+<meta property="og:image" content="http://i.imgur.com/03ALPIx.png">
+<meta property="og:updated_time" content="2016-04-28T03:49:18.368Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NBA">
-<meta name="twitter:description" content="Keep Moving">
+<meta name="twitter:title" content="数据可视化">
+<meta name="twitter:description" content="使用HTML5 Canvas Canvas是HTML5语言中最具创新和影响力的元素，尤其它是与数据可视化相关的。通过使用&amp;lt;Canvas&amp;gt;标记，设计师在web页面中创建了一块预留的任意区域，可以包含在运行时通过编程方式创建的图形。HTML5画布图形是有强大的JavaScript API提供的——大量的API目前都具有良好的跨浏览器支持，并且可以立即使用。
+使用&amp;lt;Canvas&amp;gt;">
+<meta name="twitter:image" content="http://i.imgur.com/03ALPIx.png">
 
 
 
@@ -107,7 +112,7 @@
   };
 </script>
 
-  <title> NBA | Go Big or Go Home </title>
+  <title> 数据可视化 | Go Big or Go Home </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -206,7 +211,7 @@
   
   
 
-  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -217,7 +222,7 @@
             
             
               
-                NBA
+                数据可视化
               
             
           </h1>
@@ -229,8 +234,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-22T11:15:14+08:00" content="2016-04-22">
-              2016-04-22
+            <time itemprop="dateCreated" datetime="2016-04-28T10:04:26+08:00" content="2016-04-28">
+              2016-04-28
             </time>
           </span>
 
@@ -262,7 +267,63 @@
       
 
       
-        
+        <h2 id="使用HTML5-Canvas"><a href="#使用HTML5-Canvas" class="headerlink" title="使用HTML5 Canvas"></a>使用HTML5 Canvas</h2><p> Canvas是HTML5语言中最具创新和影响力的元素，尤其它是与数据可视化相关的。通过使用<code>&lt;Canvas&gt;</code>标记，设计师在web页面中创建了一块预留的任意区域，可以包含在运行时通过编程方式创建的图形。HTML5画布图形是有强大的JavaScript API提供的——大量的API目前都具有良好的跨浏览器支持，并且可以立即使用。</p>
+<p>使用<code>&lt;Canvas&gt;</code>的第一步是：在HTML页面的<code>&lt;body&gt;</code>区域中包含该标记。下面是一个完整的<code>&lt;Canvas&gt;</code>标记列表：</p>
+<pre><code>&lt;canvas id=&quot;chart1&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;
+&lt;img src=&quot;images/altchart1.jpg&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;
+&lt;/canvas&gt;
+</code></pre><p>初始化画布的基本步骤：</p>
+<ol>
+<li>创建一个变量用于保存画布对象，使用它的ID进行识别</li>
+<li>检查是否支持画布API的getContext()方法</li>
+<li>如果支持，创建一个变量并在目标画布对象上应用getContext()方法</li>
+</ol>
+<p>在实际中，代码如下：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+ functiondrawCanvas(){
+var theChart = document.getElementById(&apos;chart1&apos;);
+if(theChart.getContext){
+    var theChart = theChart.getContext(&apos;2d&apos;);
+    }
+}
+&lt;/script&gt;
+</code></pre><p>在定义了画布的上下文之后，所有的绘制调用都将引用该变量，将画布区域当做坐标空间。<code>canvas</code>标记中声明的width和height特性决定了网格中可用的像素数量，在该示例中：</p>
+<pre><code>&lt;canvas id=&quot;chart1&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;
+</code></pre><p>X轴有600像素，Y轴有400像素，默认网格原点(0,0)被设置到了画布的左上角。获得了该信息后，一个填充矩形可以使用fillRect()函数绘制到画布。</p>
+<pre><code>filRect(50,200,100,200)
+</code></pre><p>该代码将输出一个如图所示的简单条形图<br><img src="http://i.imgur.com/03ALPIx.png" alt=""><br>下面是绘制第一个矩形的完整HTML页面代码。我们已经添加了一些基本的CSS样式和HTML，用于将画布居中并显示出轮廓。</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Canvas Example 1&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  function drawCanvas(){
+var theChart = document.getElementById(&apos;chart1&apos;);
+if (theChart.getContext){
+  var theContext = theChart.getContext(&apos;2d&apos;);
+  theContext.fillRect(50,200,100,200);
+}
+  }
+&lt;/script&gt;
+&lt;style&gt;
+#outerWrapper {
+    width: 800px;    
+    margin: 1em auto;
+}
+canvas {
+    border: 1px solid #000;    
+}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body onLoad=&quot;drawCanvas();&quot;&gt;
+&lt;div id=&quot;outerWrapper&quot;&gt;
+  &lt;canvas id=&quot;chart1&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
       
     </div>
     
@@ -296,24 +357,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/nba/" rel="tag">#nba</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/04/27/JavaScript概述/" rel="next" title="JavaScript概述">
+                <i class="fa fa-chevron-left"></i> JavaScript概述
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/22/Hexo搭建Github静态博客/" rel="prev" title="Hexo搭建Github静态博客">
-                Hexo搭建Github静态博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -440,7 +495,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用HTML5-Canvas"><span class="nav-number">1.</span> <span class="nav-text">使用HTML5 Canvas</span></a></li></ol></div>
             
           </div>
         </section>
