@@ -109,7 +109,7 @@ git status——查看仓">
 <meta property="og:image" content="http://i.imgur.com/j6f7cEs.png">
 <meta property="og:image" content="http://i.imgur.com/REYXe0q.png">
 <meta property="og:image" content="http://i.imgur.com/78z70HW.png">
-<meta property="og:updated_time" content="2016-05-02T13:34:14.001Z">
+<meta property="og:updated_time" content="2016-05-03T05:17:53.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git操作">
 <meta name="twitter:description" content="通过实际操作学习Git1.基本操作git init ——初始化仓库要使用Git进行版本管理，必须先初始化仓库。Git是使用git init命令进行初始化的。请实际建立一个目录并初始化仓库。如果初始化成功，执行git init命令的目录下就会生成.git目录。这个目录里存储着管理当前目录内容所需的仓库数据。在Git中，我们将这个目录的内容称为“附属于该仓库的工作树”。
@@ -393,7 +393,176 @@ $git log -p README.md
 <h2 id="更改提交的操作"><a href="#更改提交的操作" class="headerlink" title="更改提交的操作"></a>更改提交的操作</h2><h3 id="git-reset——回溯历史版本"><a href="#git-reset——回溯历史版本" class="headerlink" title="git reset——回溯历史版本"></a>git reset——回溯历史版本</h3><p>Git的另一特征便是可以灵活操作历史版本。借助分散仓库的优势，可以在不影响其他仓库的前提下对历史版本进行操作。</p>
 <h4 id="回溯到创建feature-A分支前"><a href="#回溯到创建feature-A分支前" class="headerlink" title="回溯到创建feature-A分支前"></a>回溯到创建feature-A分支前</h4><p>回溯，创建feature-B的特性分支。<br>要让仓库的HEAD、暂存区、当前工作树回溯到指定状态，需要用到<code>git rest --hard</code>命令。<br>只要提供目标时间点的哈希值，就可以完全恢复至该时间点的状态。执行下面命令：<br><img src="http://i.imgur.com/j6f7cEs.png" alt=""></p>
 <h4 id="创建fix-B分支"><a href="#创建fix-B分支" class="headerlink" title="创建fix-B分支"></a>创建fix-B分支</h4><p>现在我们来创建特性分支（fix-B）。<br>我们在README.md中添加一行文字<br>然后直接提交README.md文件。<br><img src="http://i.imgur.com/REYXe0q.png" alt=""></p>
-<h4 id="推进至feature-A分支合并后的状态"><a href="#推进至feature-A分支合并后的状态" class="headerlink" title="推进至feature-A分支合并后的状态"></a>推进至feature-A分支合并后的状态</h4><p>首先恢复到feature-A分支合并后的状态，不妨称这一操作为”推进历史”。<br>git log命令只能查看以当前状态为重点的历史日志。所以这里要使用git reflog命令，查看当前仓库的操作日志。在日志中找出回溯历史前的哈希值，通过<code>git reset hard</code>命令恢复到回溯历史前的状态。<br>首先执行<code>git reflog</code>命令，查看当前仓库执行过的操作的日志。<br><img src="http://i.imgur.com/78z70HW.png" alt=""></p>
+<h4 id="推进至feature-A分支合并后的状态"><a href="#推进至feature-A分支合并后的状态" class="headerlink" title="推进至feature-A分支合并后的状态"></a>推进至feature-A分支合并后的状态</h4><p>首先恢复到feature-A分支合并后的状态，不妨称这一操作为”推进历史”。<br>git log命令只能查看以当前状态为重点的历史日志。所以这里要使用git reflog命令，查看当前仓库的操作日志。在日志中找出回溯历史前的哈希值，通过<code>git reset hard</code>命令恢复到回溯历史前的状态。<br>首先执行<code>git reflog</code>命令，查看当前仓库执行过的操作的日志。<br><img src="http://i.imgur.com/78z70HW.png" alt=""><br>在日志中，我们看到Git命令的执行记录。只要不进行Git的GC就可以通过日志随意调取近期的历史状态。务必牢记本部分。<br>从上面数第四行表示feature-A特性分支合并后的状态，对应哈希值为<code>5c4e29a</code>。我们将HEAD、暂存区、工作树恢复到这个时间点的状态。</p>
+<pre><code>$ git checkout master
+Switched to branch &apos;master&apos;
+$ git reset --hard 5c3e29a
+HEAD is now at 5c3e29a Merge branch &apos;feature-A&apos;
+</code></pre><p>之前我们使用<code>git reset --hard</code>命令回溯了历史，这里又再次通过它回溯前的历史状态。</p>
+<h3 id="消除冲突"><a href="#消除冲突" class="headerlink" title="消除冲突"></a>消除冲突</h3><p>现在只要合并<code>fix-B</code>分支，就可以得到我们想要的状态。进行合并操作。</p>
+<pre><code>$ git merge --no-ff fix-B
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre><p>这时，系统告诉我们README.md文件发生了冲突（conflict）。系统在合并README.md文件时，feature-A分支更改的部分与本次想要合并的fix-B分支更改的部分发生了冲突。</p>
+<h4 id="查看冲突部分并将其解决"><a href="#查看冲突部分并将其解决" class="headerlink" title="查看冲突部分并将其解决"></a>查看冲突部分并将其解决</h4><p>用编辑器打开README.md文件，就会发现内容变成下面这个样子。</p>
+<pre><code># Git教程 #
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+- feature-A
+=======
+ -fix-B
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fix-B
+</code></pre><p> =======以上的部分是当前HEAD的内容，以下的部分是要合并的fix-B分支的内容。我们在编辑器中将其改成想要的样子。</p>
+<pre><code># Git教程 #
+- feature-A
+ -fix-B
+</code></pre><h4 id="提交解决后的结果"><a href="#提交解决后的结果" class="headerlink" title="提交解决后的结果"></a>提交解决后的结果</h4><p>冲突解决后，执行<code>git add</code>命令与<code>git commit</code>命令。</p>
+<pre><code>$ git add README.md
+$ git commit -m &quot;Fix conflict&quot;
+[master 55caf1a] Fix conflict
+</code></pre><h3 id="git-commit-–amend——修改提交信息"><a href="#git-commit-–amend——修改提交信息" class="headerlink" title="git commit –amend——修改提交信息"></a>git commit –amend——修改提交信息</h3><p>要修改上一条提交信息，可以使用<code>git commit --amend</code>命令。</p>
+<h3 id="git-rebase-i——压缩历史"><a href="#git-rebase-i——压缩历史" class="headerlink" title="git rebase -i——压缩历史"></a>git rebase -i——压缩历史</h3><p>在合并特征分支前，如果发现已提交内容中有些拼写错误等，不妨提交一个修改，然后将这个修改包含到前一个提交之中，压缩成一个历史记录。这是个常用的技巧。</p>
+<h4 id="创建feature-C分支"><a href="#创建feature-C分支" class="headerlink" title="创建feature-C分支"></a>创建feature-C分支</h4><p>首先创建feature-C特性分支。<br>我们在README.md文件中添加一行文字，并故意留下错误。<br>提交这部分内容，我们用<code>git commit -am</code>完成这两步操作。</p>
+<pre><code>$ git commit -am &quot;Add feature-C&quot;
+[feature-C a0c6d59] Add feature-C
+ 1 file changed, 1 insertion(+)
+</code></pre><h4 id="修正拼写错误"><a href="#修正拼写错误" class="headerlink" title="修正拼写错误"></a>修正拼写错误</h4><p>自行修正README.md，修正后的差别如下：</p>
+<pre><code>$ git diff
+diff --git a/README.md b/README.md
+index f19dea9..7a65e4f 100644
+--- a/README.md
++++ b/README.md
+@@ -1,5 +1,5 @@
+ # Git教程 #
+ - feature-A
+  -fix-B
+--faeture-C
++-feature-C
+</code></pre><p>然后进行提交</p>
+<pre><code>$ git commit -am &quot;Fix typo&quot;
+[feature-C 834a496] Fix typo
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+</code></pre><p>错字漏字等失误称作typo</p>
+<h4 id="更改历史"><a href="#更改历史" class="headerlink" title="更改历史"></a>更改历史</h4><p>将”Fix typo”修正的内容与之前一次的提交合并，在历史记录中合并为一次 完美的提交。我们要用到<code>git rebase</code>命令。</p>
+<pre><code>pick a0c6d59 Add feature-C
+pick 834a496 Fix typo
+
+# Rebase 55caf1a..834a496 onto 55caf1a (2 command(s))
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like &quot;squash&quot;, but discard this commit&apos;s log message
+# x, exec = run command (the rest of the line) using shell
+# d, drop = remove commit
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+</code></pre><h2 id="推送至远程仓库"><a href="#推送至远程仓库" class="headerlink" title="推送至远程仓库"></a>推送至远程仓库</h2><p>Git是分散型版本管理系统。下面，我们开始接触远在网络另一头的远程仓库。远程仓库顾名思义，是我们本地仓库相对独立的另一个仓库。让我们现在GitHub上创建一个仓库，并将其设置为本地仓库的远程仓库。</p>
+<h3 id="git-remote-add——添加远程仓库"><a href="#git-remote-add——添加远程仓库" class="headerlink" title="git remote add——添加远程仓库"></a>git remote add——添加远程仓库</h3><p>现在我们用<code>git remote add</code>命令将它设置成本地仓库的远程仓库。</p>
+<pre><code>$ git remote add origin git@github.com:CodingMaster1/git-tutorial.git
+</code></pre><p>按照上述格式执行命令后，Git会自动将远程仓库的名称设置为origin（标识符）。</p>
+<h3 id="git-push——推送至远程仓库"><a href="#git-push——推送至远程仓库" class="headerlink" title="git push——推送至远程仓库"></a>git push——推送至远程仓库</h3><h4 id="推送至master分支"><a href="#推送至master分支" class="headerlink" title="推送至master分支"></a>推送至master分支</h4><p>如果想将当前分支下本地仓库的内容推送给远程仓库，需<code>git push</code>命令。</p>
+<pre><code> $ git push -u origin master
+Enter passphrase for key &apos;/c/Users/Andone/.ssh/id_rsa&apos;:
+Counting objects: 16, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (16/16), 1.18 KiB | 0 bytes/s, done.
+Total 16 (delta 2), reused 0 (delta 0)
+To git@github.com:CodingMaster1/git-tutorial.git
+ * [new branch]      master -&gt; master
+Branch master set up to track remote branch master from origin.
+</code></pre><p>像这样执行<code>git push</code>命令，当前分支的内容就会被推送至远程仓库origin的master分支。-u参数可以在推送的同时，将origin仓库的master分支设置为本地仓库当前分支的upstream(上游)。添加了这个参数，将来运行<code>git pull</code>命令从远程仓库获取内容时，本地仓库的这个分支就可以直接从origin的master分支获取内容，省去了另外添加参数的麻烦。<br>执行该操作后，当前仓库master分支的内容将会被推送到GitHub的远程仓库中。</p>
+<h4 id="推送至master以外的分支"><a href="#推送至master以外的分支" class="headerlink" title="推送至master以外的分支"></a>推送至master以外的分支</h4><p>除了master分支以外，远程仓库也可以创建其他分支。EX:我们在本地仓库中创建feature-D分支，将它以同名形式push至远程仓库。</p>
+<pre><code>$ git checkout -b feature-D
+Switched to a new branch &apos;feature-D&apos;
+</code></pre><p>我们在本地仓库中创建了feature-D分支，现在将它push给远程仓库并保持分支名称不变。</p>
+<pre><code>$ git push -u origin feature-D
+Enter passphrase for key &apos;/c/Users/Andone/.ssh/id_rsa&apos;:
+Counting objects: 6, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (6/6), 537 bytes | 0 bytes/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To git@github.com:CodingMaster1/git-tutorial.git
+ * [new branch]      feature-D -&gt; feature-D
+Branch feature-D set up to track remote branch feature-D from origin.
+</code></pre><p>现在在远程仓库的GitHub页面就可以查看到feature-D分支了。</p>
+<h2 id="从远程仓库获取"><a href="#从远程仓库获取" class="headerlink" title="从远程仓库获取"></a>从远程仓库获取</h2><p> 我们从实际开发者的角度出发，再另一个目录下新建一个本地仓库，学习从远程仓库获取内容的相关操作。</p>
+<h3 id="git-clone——获取远程仓库"><a href="#git-clone——获取远程仓库" class="headerlink" title="git clone——获取远程仓库"></a>git clone——获取远程仓库</h3><h4 id="获取远程仓库"><a href="#获取远程仓库" class="headerlink" title="获取远程仓库"></a>获取远程仓库</h4><p>首先我们换到其他目录下，将GitHub上的仓库clone到本地。注意不要在同一个文件夹下。</p>
+<pre><code>$ git clone git@github.com:CodingMaster1/git-tutorial.git
+Cloning into &apos;git-tutorial&apos;...
+Warning: Permanently added the RSA host key for IP address &apos;192.30.252.130&apos; to the list of known hosts.
+Enter passphrase for key &apos;/c/Users/Andone/.ssh/id_rsa&apos;:
+remote: Counting objects: 22, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 22 (delta 2), reused 22 (delta 2), pack-reused 0
+Receiving objects: 100% (22/22), done.
+Resolving deltas: 100% (2/2), done.
+Checking connectivity... done.
+</code></pre><p>执行<code>git clone</code>命令后我们会默认处于master分支下，同时系统会自动将origin设置成该远程仓库的标识符。也就是说，当前本地仓库的master分支与GitHub端远程仓库（origin）的master分支的内容上是完全相同的。git</p>
+<pre><code>$ git branch -a
+* master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/feature-D
+  remotes/origin/master
+</code></pre><p>用<code>git branch -a</code>命令查看当前分支的相关信息。-a参数可以同时显示本地仓库和远程仓库的分支信息。</p>
+<h4 id="获取远程的feature-D分支"><a href="#获取远程的feature-D分支" class="headerlink" title="获取远程的feature-D分支"></a>获取远程的feature-D分支</h4><p>我们试着将feature-D分支获取至本地仓库。</p>
+<pre><code>$ git checkout -b feature-D origin/feature-D
+Branch feature-D set up to track remote branch feature-D from origin.
+Switched to a new branch &apos;feature-D&apos;
+</code></pre><p>-b参数的后面是本地仓库中新建的分支名称。例子中指定了origin/feature-D，也就是说以名为origin的仓库（这里指GitHub端的仓库）的feature-D分支为来源，在本地仓库中创建feature-D分支。</p>
+<h4 id="向本地的feature-D分支提交更改"><a href="#向本地的feature-D分支提交更改" class="headerlink" title="向本地的feature-D分支提交更改"></a>向本地的feature-D分支提交更改</h4><p>现在我们假定我们是另一名开发者，我做一个新的提交。在README.md文件中添加一行文字，查看更改。</p>
+<pre><code>$ git diff
+diff --git a/README.md b/README.md
+index 7a65e4f..d46a355 100644
+--- a/README.md
++++ b/README.md
+@@ -3,3 +3,4 @@
+  -fix-B
+ -feature-C
+
++哈哈哈
+</code></pre><p>按照之前的提交即可。</p>
+<pre><code>$ git commit -am &quot;Add feature-D&quot;
+[feature-D 4509955] Add feature-D
+ 1 file changed, 1 insertion(+)
+</code></pre><h4 id="推送feature-D分支"><a href="#推送feature-D分支" class="headerlink" title="推送feature-D分支"></a>推送feature-D分支</h4><p>现在来推送分支。</p>
+<pre><code>$ git push
+Enter passphrase for key &apos;/c/Users/Andone/.ssh/id_rsa&apos;:
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 288 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:CodingMaster1/git-tutorial.git
+   834a496..4509955  feature-D -&gt; feature-D
+</code></pre><p>从远程仓库获取feature-D分支，在本地仓库中提交更改，再将feature-D分支推送回远程仓库，通过这一系列操作，就可以与其他开发者合作，共同培育feature-D分支，实现某些功能。</p>
+<h3 id="git-pull——获取最新的远程仓库分支"><a href="#git-pull——获取最新的远程仓库分支" class="headerlink" title="git pull——获取最新的远程仓库分支"></a>git pull——获取最新的远程仓库分支</h3><p>现在我们回到原先的那个目录下。这边的本地仓库只创建了feature-D分支，并没有进行提交。这时我们就可以使用<code>git pull</code>命令，将本地仓库feature-D分支更新到最新状态。</p>
+<pre><code>$ git pull origin feature-D
+Enter passphrase for key &apos;/c/Users/Andone/.ssh/id_rsa&apos;:
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:CodingMaster1/git-tutorial
+ * branch            feature-D  -&gt; FETCH_HEAD
+   834a496..4509955  feature-D  -&gt; origin/feature-D
+Updating 834a496..4509955
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+</code></pre><p>GitHub端远程仓库中的feature-D分支已经是最新状态，所以本地仓库中的feature-D分支就得到了更新。今后只需要像平常一样在本地仓库进行提交再push给远程仓库，就可以与其他开发者同时在同一个分支中进行作业，不断给feature-D增加功能。<br>如果两人同时修改了同一部分的源代码，push时就很容易发生冲突。所以多名开发者在同一分支中进行作业时，为减少冲突情况的发生，建议更频繁的进行push和pull操作。</p>
+<h2 id="帮助学习的Git资料"><a href="#帮助学习的Git资料" class="headerlink" title="帮助学习的Git资料"></a>帮助学习的Git资料</h2><h3 id="Pro-Git"><a href="#Pro-Git" class="headerlink" title="Pro Git"></a>Pro Git</h3><p><a href="http://git-scm.com/book/zh/vl" title="Pro Git" target="_blank" rel="external">http://git-scm.com/book/zh/vl</a></p>
+<p>###LearnGitBranching  ###<br>强烈推荐<br><a href="http://pcottle.github.io/learnGitBranching/" target="_blank" rel="external">http://pcottle.github.io/learnGitBranching/</a></p>
 
       
     </div>
@@ -611,7 +780,7 @@ $git log -p README.md
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#通过实际操作学习Git"><span class="nav-number">1.</span> <span class="nav-text">通过实际操作学习Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本操作"><span class="nav-number">1.1.</span> <span class="nav-text">1.基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-init-——初始化仓库"><span class="nav-number">1.1.1.</span> <span class="nav-text">git init ——初始化仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-status——查看仓库的状态"><span class="nav-number">1.1.2.</span> <span class="nav-text">git status——查看仓库的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-add——向暂存区添加文件"><span class="nav-number">1.1.3.</span> <span class="nav-text">git add——向暂存区添加文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-commit——保存仓库的历史记录"><span class="nav-number">1.1.4.</span> <span class="nav-text">git commit——保存仓库的历史记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#记述一行提交信息"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">记述一行提交信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#记述详细提交信息"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">记述详细提交信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终止提交"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">终止提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看提交状态"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">查看提交状态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-log——查看提交日志"><span class="nav-number">1.1.5.</span> <span class="nav-text">git log——查看提交日志</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#只显示提交的第一行"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">只显示提交的第一行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只显示制定目录、文件的日志"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">只显示制定目录、文件的日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示文件的改动"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">显示文件的改动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-diff"><span class="nav-number">1.1.6.</span> <span class="nav-text">git diff</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看工作树和最新提交的差别"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">查看工作树和最新提交的差别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支操作"><span class="nav-number">1.2.</span> <span class="nav-text">分支操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-branch——显示分支一览表"><span class="nav-number">1.2.1.</span> <span class="nav-text">git branch——显示分支一览表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-checkout-b-——创建、切换分支"><span class="nav-number">1.2.2.</span> <span class="nav-text">git checkout -b ——创建、切换分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#切换到feature-A分支并进行提交"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">切换到feature-A分支并进行提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换到master分支"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">切换到master分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换回上一个分支"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">切换回上一个分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-merge——合并分支"><span class="nav-number">1.2.3.</span> <span class="nav-text">git merge——合并分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-log-–graph——以图表形式查看分支"><span class="nav-number">1.2.4.</span> <span class="nav-text">git log –graph——以图表形式查看分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改提交的操作"><span class="nav-number">1.3.</span> <span class="nav-text">更改提交的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-reset——回溯历史版本"><span class="nav-number">1.3.1.</span> <span class="nav-text">git reset——回溯历史版本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回溯到创建feature-A分支前"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">回溯到创建feature-A分支前</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建fix-B分支"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">创建fix-B分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推进至feature-A分支合并后的状态"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">推进至feature-A分支合并后的状态</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#通过实际操作学习Git"><span class="nav-number">1.</span> <span class="nav-text">通过实际操作学习Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本操作"><span class="nav-number">1.1.</span> <span class="nav-text">1.基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-init-——初始化仓库"><span class="nav-number">1.1.1.</span> <span class="nav-text">git init ——初始化仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-status——查看仓库的状态"><span class="nav-number">1.1.2.</span> <span class="nav-text">git status——查看仓库的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-add——向暂存区添加文件"><span class="nav-number">1.1.3.</span> <span class="nav-text">git add——向暂存区添加文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-commit——保存仓库的历史记录"><span class="nav-number">1.1.4.</span> <span class="nav-text">git commit——保存仓库的历史记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#记述一行提交信息"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">记述一行提交信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#记述详细提交信息"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">记述详细提交信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终止提交"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">终止提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看提交状态"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">查看提交状态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-log——查看提交日志"><span class="nav-number">1.1.5.</span> <span class="nav-text">git log——查看提交日志</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#只显示提交的第一行"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">只显示提交的第一行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只显示制定目录、文件的日志"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">只显示制定目录、文件的日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示文件的改动"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">显示文件的改动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-diff"><span class="nav-number">1.1.6.</span> <span class="nav-text">git diff</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看工作树和最新提交的差别"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">查看工作树和最新提交的差别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支操作"><span class="nav-number">1.2.</span> <span class="nav-text">分支操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-branch——显示分支一览表"><span class="nav-number">1.2.1.</span> <span class="nav-text">git branch——显示分支一览表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-checkout-b-——创建、切换分支"><span class="nav-number">1.2.2.</span> <span class="nav-text">git checkout -b ——创建、切换分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#切换到feature-A分支并进行提交"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">切换到feature-A分支并进行提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换到master分支"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">切换到master分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换回上一个分支"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">切换回上一个分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-merge——合并分支"><span class="nav-number">1.2.3.</span> <span class="nav-text">git merge——合并分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-log-–graph——以图表形式查看分支"><span class="nav-number">1.2.4.</span> <span class="nav-text">git log –graph——以图表形式查看分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改提交的操作"><span class="nav-number">1.3.</span> <span class="nav-text">更改提交的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-reset——回溯历史版本"><span class="nav-number">1.3.1.</span> <span class="nav-text">git reset——回溯历史版本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回溯到创建feature-A分支前"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">回溯到创建feature-A分支前</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建fix-B分支"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">创建fix-B分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推进至feature-A分支合并后的状态"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">推进至feature-A分支合并后的状态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消除冲突"><span class="nav-number">1.3.2.</span> <span class="nav-text">消除冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看冲突部分并将其解决"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">查看冲突部分并将其解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交解决后的结果"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">提交解决后的结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-commit-–amend——修改提交信息"><span class="nav-number">1.3.3.</span> <span class="nav-text">git commit –amend——修改提交信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-rebase-i——压缩历史"><span class="nav-number">1.3.4.</span> <span class="nav-text">git rebase -i——压缩历史</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建feature-C分支"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">创建feature-C分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修正拼写错误"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">修正拼写错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改历史"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">更改历史</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送至远程仓库"><span class="nav-number">1.4.</span> <span class="nav-text">推送至远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-remote-add——添加远程仓库"><span class="nav-number">1.4.1.</span> <span class="nav-text">git remote add——添加远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-push——推送至远程仓库"><span class="nav-number">1.4.2.</span> <span class="nav-text">git push——推送至远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推送至master分支"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">推送至master分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推送至master以外的分支"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">推送至master以外的分支</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从远程仓库获取"><span class="nav-number">1.5.</span> <span class="nav-text">从远程仓库获取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-clone——获取远程仓库"><span class="nav-number">1.5.1.</span> <span class="nav-text">git clone——获取远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取远程仓库"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">获取远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取远程的feature-D分支"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">获取远程的feature-D分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向本地的feature-D分支提交更改"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">向本地的feature-D分支提交更改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推送feature-D分支"><span class="nav-number">1.5.1.4.</span> <span class="nav-text">推送feature-D分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull——获取最新的远程仓库分支"><span class="nav-number">1.5.2.</span> <span class="nav-text">git pull——获取最新的远程仓库分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助学习的Git资料"><span class="nav-number">1.6.</span> <span class="nav-text">帮助学习的Git资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pro-Git"><span class="nav-number">1.6.1.</span> <span class="nav-text">Pro Git</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
