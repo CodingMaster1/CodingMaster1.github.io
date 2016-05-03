@@ -81,22 +81,22 @@
 
 
 <meta name="description" content="根据维基百科，在各种组织里非结构性数据可能占据了所有数据的70%-80%。由于每个人都想在数据的重重高山中搜寻到隐藏的宝藏，因此用于处理、分析、可视化数据的新工具不断地推陈出新。本文主要介绍 R语言 的数据处理和 D3 Javascript库 的数据可视化之间的结合。
-#不可变的图表#当我们使用R做数据处理时，R本身自带了一些生成图表的选项。其中一个选项就是使用R的”ggplit2″包。这个包可以">
+不可变的图表当我们使用R做数据处理时，R本身自带了一些生成图表的选项。其中一个选项就是使用R的”ggplit2″包。这个包可以帮助">
 <meta property="og:type" content="article">
 <meta property="og:title" content="珠联璧合：R和D3.js大数据可视化">
 <meta property="og:url" content="http://codingmaster1.github.io/2016/04/29/珠联璧合：R和D3-js大数据可视化/index.html">
 <meta property="og:site_name" content="Go Big or Go Home">
 <meta property="og:description" content="根据维基百科，在各种组织里非结构性数据可能占据了所有数据的70%-80%。由于每个人都想在数据的重重高山中搜寻到隐藏的宝藏，因此用于处理、分析、可视化数据的新工具不断地推陈出新。本文主要介绍 R语言 的数据处理和 D3 Javascript库 的数据可视化之间的结合。
-#不可变的图表#当我们使用R做数据处理时，R本身自带了一些生成图表的选项。其中一个选项就是使用R的”ggplit2″包。这个包可以">
+不可变的图表当我们使用R做数据处理时，R本身自带了一些生成图表的选项。其中一个选项就是使用R的”ggplit2″包。这个包可以帮助">
 <meta property="og:image" content="http://i.imgur.com/Z9kyEOj.jpg">
 <meta property="og:image" content="http://i.imgur.com/WioeAjk.jpg">
 <meta property="og:image" content="http://i.imgur.com/XKOeMAm.jpg">
 <meta property="og:image" content="http://i.imgur.com/5SxqEhH.jpg">
-<meta property="og:updated_time" content="2016-04-29T03:26:11.262Z">
+<meta property="og:updated_time" content="2016-05-03T15:41:00.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="珠联璧合：R和D3.js大数据可视化">
 <meta name="twitter:description" content="根据维基百科，在各种组织里非结构性数据可能占据了所有数据的70%-80%。由于每个人都想在数据的重重高山中搜寻到隐藏的宝藏，因此用于处理、分析、可视化数据的新工具不断地推陈出新。本文主要介绍 R语言 的数据处理和 D3 Javascript库 的数据可视化之间的结合。
-#不可变的图表#当我们使用R做数据处理时，R本身自带了一些生成图表的选项。其中一个选项就是使用R的”ggplit2″包。这个包可以">
+不可变的图表当我们使用R做数据处理时，R本身自带了一些生成图表的选项。其中一个选项就是使用R的”ggplit2″包。这个包可以帮助">
 <meta name="twitter:image" content="http://i.imgur.com/Z9kyEOj.jpg">
 
 
@@ -328,7 +328,7 @@
 
       
         <p>根据维基百科，在各种组织里非结构性数据可能占据了所有数据的70%-80%。由于每个人都想在数据的重重高山中搜寻到隐藏的宝藏，因此用于处理、分析、可视化数据的新工具不断地推陈出新。本文主要介绍 R语言 的数据处理和 D3 Javascript库 的数据可视化之间的结合。</p>
-<p>#不可变的图表#<br>当我们使用R做数据处理时，R本身自带了一些生成图表的选项。其中一个选项就是使用R的”ggplit2″包。这个包可以帮助我们轻松地把数据转化为漂亮的表格。 下图就是使用 ggplot生成的表格。<br><img src="http://i.imgur.com/Z9kyEOj.jpg" alt=""><br>如图所示，在该表中有数不清的数据，我们很难去分辨出某个特定的时间点的值是多少。由于它是一个静态的png图，我们无法将其放大。如果我们想要某个时间段的拥有更多细节的图表，就不得不用小一点的数据集再跑一遍我们的ggplot脚本。这种数据可视化的方式并不灵活。</p>
+<h1 id="不可变的图表"><a href="#不可变的图表" class="headerlink" title="不可变的图表"></a>不可变的图表</h1><p>当我们使用R做数据处理时，R本身自带了一些生成图表的选项。其中一个选项就是使用R的”ggplit2″包。这个包可以帮助我们轻松地把数据转化为漂亮的表格。 下图就是使用 ggplot生成的表格。<br><img src="http://i.imgur.com/Z9kyEOj.jpg" alt=""><br>如图所示，在该表中有数不清的数据，我们很难去分辨出某个特定的时间点的值是多少。由于它是一个静态的png图，我们无法将其放大。如果我们想要某个时间段的拥有更多细节的图表，就不得不用小一点的数据集再跑一遍我们的ggplot脚本。这种数据可视化的方式并不灵活。</p>
 <h1 id="一起来提升交互性"><a href="#一起来提升交互性" class="headerlink" title="一起来提升交互性"></a>一起来提升交互性</h1><p>对于数据的处理，R是一个非常棒的选择。对于华丽的图表的生成，R仍是一个好的选项。然而当你想要在数据可视化上更进一步，你应该看向别处，找找其他方向了。这个时候，Javascript库D3将会映入你的眼帘。</p>
 <p>同样地，将D3和R结合起来也要从一些选项里做出选择。这取决于是否是</p>
 <ol>
@@ -607,7 +607,7 @@ imports: [
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一起来提升交互性"><span class="nav-number">1.</span> <span class="nav-text">一起来提升交互性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#先绘图，再绑定"><span class="nav-number">2.</span> <span class="nav-text">先绘图，再绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤一：获取数据"><span class="nav-number">2.1.</span> <span class="nav-text">步骤一：获取数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤二：清洗数据"><span class="nav-number">2.2.</span> <span class="nav-text">步骤二：清洗数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤三：展示数据"><span class="nav-number">2.3.</span> <span class="nav-text">步骤三：展示数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#不可变的图表"><span class="nav-number">1.</span> <span class="nav-text">不可变的图表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一起来提升交互性"><span class="nav-number">2.</span> <span class="nav-text">一起来提升交互性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#先绘图，再绑定"><span class="nav-number">3.</span> <span class="nav-text">先绘图，再绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤一：获取数据"><span class="nav-number">3.1.</span> <span class="nav-text">步骤一：获取数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤二：清洗数据"><span class="nav-number">3.2.</span> <span class="nav-text">步骤二：清洗数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤三：展示数据"><span class="nav-number">3.3.</span> <span class="nav-text">步骤三：展示数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
           </div>
         </section>
