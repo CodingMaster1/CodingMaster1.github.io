@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Linux命令," />
+  <meta name="keywords" content="数据结构，线性表," />
 
 
 
@@ -80,27 +80,25 @@
 
 
 
-<meta name="description" content="mkdir命令linux mkdir 命令用来创建指定的名称的目录，要求创建目录的用户在当前目录中具有写权限，并且指定的目录名不能是当前目录中已有的目录。
-
-命令格式： mkdir [选项]目录
-命令功能通过 mkdir 命令可以实现在指定位置创建以 DirName(指定的文件名)命名的文件夹或目录。要创建文件夹或目录的用户必须对所创建的文件夹的父文件夹具有写权限。并且，所创建的文件夹(目录)不能">
+<meta name="description" content="1.线性表的基本概念与实现1.线性表的存储结构　　存储结构有顺序存储结构和链式存储结构，前者称为顺序表后者称为链表
+1. 顺序表　　顺序表就是把线性表中的所有元素按照其逻辑顺序，依次存储到从指定的存储位置开始的一块存储空间中。
+2.链表　　在链表存储中，每个结点不仅包含所存元素本身的信息，还包含元素之前逻辑关系的信息，及前驱结点包含后继结点的地址信息。
+两种存储结构的比较　　顺序表特性是 随机访问">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux命令">
-<meta property="og:url" content="http://codingmaster1.github.io/2016/05/02/Linux命令/index.html">
+<meta property="og:title" content="数据结构——线性表表">
+<meta property="og:url" content="http://codingmaster1.github.io/2016/05/20/数据结构——线性表/index.html">
 <meta property="og:site_name" content="Go Big or Go Home">
-<meta property="og:description" content="mkdir命令linux mkdir 命令用来创建指定的名称的目录，要求创建目录的用户在当前目录中具有写权限，并且指定的目录名不能是当前目录中已有的目录。
-
-命令格式： mkdir [选项]目录
-命令功能通过 mkdir 命令可以实现在指定位置创建以 DirName(指定的文件名)命名的文件夹或目录。要创建文件夹或目录的用户必须对所创建的文件夹的父文件夹具有写权限。并且，所创建的文件夹(目录)不能">
-<meta property="og:image" content="http://i.imgur.com/jZSOdtT.jpg">
-<meta property="og:updated_time" content="2016-05-02T12:50:54.934Z">
+<meta property="og:description" content="1.线性表的基本概念与实现1.线性表的存储结构　　存储结构有顺序存储结构和链式存储结构，前者称为顺序表后者称为链表
+1. 顺序表　　顺序表就是把线性表中的所有元素按照其逻辑顺序，依次存储到从指定的存储位置开始的一块存储空间中。
+2.链表　　在链表存储中，每个结点不仅包含所存元素本身的信息，还包含元素之前逻辑关系的信息，及前驱结点包含后继结点的地址信息。
+两种存储结构的比较　　顺序表特性是 随机访问">
+<meta property="og:updated_time" content="2016-05-20T11:27:01.436Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux命令">
-<meta name="twitter:description" content="mkdir命令linux mkdir 命令用来创建指定的名称的目录，要求创建目录的用户在当前目录中具有写权限，并且指定的目录名不能是当前目录中已有的目录。
-
-命令格式： mkdir [选项]目录
-命令功能通过 mkdir 命令可以实现在指定位置创建以 DirName(指定的文件名)命名的文件夹或目录。要创建文件夹或目录的用户必须对所创建的文件夹的父文件夹具有写权限。并且，所创建的文件夹(目录)不能">
-<meta name="twitter:image" content="http://i.imgur.com/jZSOdtT.jpg">
+<meta name="twitter:title" content="数据结构——线性表表">
+<meta name="twitter:description" content="1.线性表的基本概念与实现1.线性表的存储结构　　存储结构有顺序存储结构和链式存储结构，前者称为顺序表后者称为链表
+1. 顺序表　　顺序表就是把线性表中的所有元素按照其逻辑顺序，依次存储到从指定的存储位置开始的一块存储空间中。
+2.链表　　在链表存储中，每个结点不仅包含所存元素本身的信息，还包含元素之前逻辑关系的信息，及前驱结点包含后继结点的地址信息。
+两种存储结构的比较　　顺序表特性是 随机访问">
 
 
 
@@ -118,7 +116,7 @@
   };
 </script>
 
-  <title> Linux命令 | Go Big or Go Home </title>
+  <title> 数据结构——线性表表 | Go Big or Go Home </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -278,7 +276,7 @@
             
             
               
-                Linux命令
+                数据结构——线性表表
               
             
           </h1>
@@ -290,8 +288,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-02T17:22:03+08:00" content="2016-05-02">
-              2016-05-02
+            <time itemprop="dateCreated" datetime="2016-05-20T18:49:17+08:00" content="2016-05-20">
+              2016-05-20
             </time>
           </span>
 
@@ -301,8 +299,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/02/Linux命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/02/Linux命令/" itemprop="commentsCount"></span>
+                <a href="/2016/05/20/数据结构——线性表/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/数据结构——线性表/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -330,18 +328,10 @@
       
 
       
-        <h3 id="mkdir命令"><a href="#mkdir命令" class="headerlink" title="mkdir命令"></a>mkdir命令</h3><p>linux mkdir 命令用来创建指定的名称的目录，要求创建目录的用户在当前目录中具有写权限，并且指定的目录名不能是当前目录中已有的目录。</p>
-<ol>
-<li>命令格式：<br> mkdir [选项]目录</li>
-<li><p>命令功能<br>通过 mkdir 命令可以实现在指定位置创建以 DirName(指定的文件名)命名的文件夹或目录。要创建文件夹或目录的用户必须对所创建的文件夹的父文件夹具有写权限。并且，所创建的文件夹(目录)不能与其父目录(即父文件夹)中的文件名重名，即同一个目录下不能有同名的(区分大小写)。<br>3.命令参数</p>
-<p> -m, –mode=模式，设定权限&lt;模式&gt; (类似 chmod)，而不是 rwxrwxrwx 减 umask</p>
-<p> -p, –parents  可以是一个路径名称。<br> 此时若路径中的某些目录尚不存在,加上此选项后,系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录; </p>
-<p> -v, –verbose  每次创建新目录都显示信息</p>
-<p> –help   显示此帮助信息并退出</p>
-<p> –version  输出版本信息并退出</p>
-<h3 id="Vim的保存命和退出命令"><a href="#Vim的保存命和退出命令" class="headerlink" title="Vim的保存命和退出命令"></a>Vim的保存命和退出命令</h3><p><img src="http://i.imgur.com/jZSOdtT.jpg" alt=""></p>
-</li>
-</ol>
+        <h1 id="1-线性表的基本概念与实现"><a href="#1-线性表的基本概念与实现" class="headerlink" title="1.线性表的基本概念与实现"></a>1.线性表的基本概念与实现</h1><h2 id="1-线性表的存储结构"><a href="#1-线性表的存储结构" class="headerlink" title="1.线性表的存储结构"></a>1.线性表的存储结构</h2><p>　　存储结构有<strong>顺序存储结构</strong>和<strong>链式存储结构</strong>，前者称为<strong>顺序表</strong>后者称为<strong>链表</strong></p>
+<h3 id="1-顺序表"><a href="#1-顺序表" class="headerlink" title="1. 顺序表"></a>1. 顺序表</h3><p>　　顺序表就是把线性表中的所有元素按照其逻辑顺序，依次存储到从指定的存储位置开始的一块存储空间中。</p>
+<h3 id="2-链表"><a href="#2-链表" class="headerlink" title="2.链表"></a>2.链表</h3><p>　　在链表存储中，每个结点不仅包含所存元素本身的信息，还包含元素之前逻辑关系的信息，及前驱结点包含后继结点的地址信息。</p>
+<h3 id="两种存储结构的比较"><a href="#两种存储结构的比较" class="headerlink" title="两种存储结构的比较"></a>两种存储结构的比较</h3><p>　　顺序表特性是 <strong>随机访问特性</strong>和<strong>占用连续的存储空间</strong>，存储分配只能预先进行，即静态分配，一旦分配好了，在对其操作的过程中始终不变。<br>　　再看链表，不支持随机访问，链表中每一个结点需要划出一部分空间来指向下一个结点位置的指针，因此链表中<strong>结点的存储空间利用率要稍低一些</strong>。链表中结点是散落分布在存储器中的，所以链表支持存储空间的<strong>动态分配</strong>，即在需要新的结点时在进行空间分配，而不需要一次性地划分所有所需空间给链表。<br><strong>全面的比较</strong><br>基于空间的比较：<br>(1)存储分配的方式：<br>顺序表的存储空间是静态分配的。<br>链表的存储空间是动态分配的。<br>(2)存储密度(存储密度=结点值域所占的存储量/结点结构所占的存储总量)<br>顺序表的存储密度=1，链表的存储密度&lt;1。<br>基于时间的比较：<br>(1)存取方式<br>顺序表可以随机存取，也可以顺序存取。<br>链表是顺序存取。<br>(2)插入/删除时移动元素的个数<br>顺序表平均移动近一半的元素，<br>链表不需要移动元素，只需要修改指针。</p>
 
       
     </div>
@@ -383,7 +373,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux命令/" rel="tag">#Linux命令</a>
+            <a href="/tags/数据结构，线性表/" rel="tag">#数据结构，线性表</a>
           
         </div>
       
@@ -392,16 +382,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/01/GitHub入门到实践/" rel="next" title="Git操作">
-                <i class="fa fa-chevron-left"></i> Git操作
+              <a href="/2016/05/16/js中提取URL的搜索字符串中的参数/" rel="next" title="js中提取URL的搜索字符串中的参数">
+                <i class="fa fa-chevron-left"></i> js中提取URL的搜索字符串中的参数
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/16/js中提取URL的搜索字符串中的参数/" rel="prev" title="js中提取URL的搜索字符串中的参数">
-                js中提取URL的搜索字符串中的参数 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/24/java常见面试题/" rel="prev" title="java常见面试题">
+                java常见面试题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -417,10 +407,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/05/02/Linux命令/"
-     data-title="Linux命令"
+        <div class="ds-share flat" data-thread-key="2016/05/20/数据结构——线性表/"
+     data-title="数据结构——线性表表"
      data-content=""
-     data-url="http://codingmaster1.github.io/2016/05/02/Linux命令/">
+     data-url="http://codingmaster1.github.io/2016/05/20/数据结构——线性表/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -447,8 +437,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/02/Linux命令/"
-           data-title="Linux命令" data-url="http://codingmaster1.github.io/2016/05/02/Linux命令/">
+      <div class="ds-thread" data-thread-key="2016/05/20/数据结构——线性表/"
+           data-title="数据结构——线性表表" data-url="http://codingmaster1.github.io/2016/05/20/数据结构——线性表/">
       </div>
     
   </div>
@@ -559,7 +549,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mkdir命令"><span class="nav-number">1.</span> <span class="nav-text">mkdir命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim的保存命和退出命令"><span class="nav-number">2.</span> <span class="nav-text">Vim的保存命和退出命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-线性表的基本概念与实现"><span class="nav-number">1.</span> <span class="nav-text">1.线性表的基本概念与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-线性表的存储结构"><span class="nav-number">1.1.</span> <span class="nav-text">1.线性表的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-顺序表"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 顺序表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-链表"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种存储结构的比较"><span class="nav-number">1.1.3.</span> <span class="nav-text">两种存储结构的比较</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
