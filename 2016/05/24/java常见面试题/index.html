@@ -80,31 +80,39 @@
 
 
 
-<meta name="description" content="1.
-
+<meta name="description" content="内存
 堆区：用new创建的对象。
 栈区：函数中的临时变量，基本类型的数据和对象的引用，对象本身不放在栈区。
 字符串常量区：字符串。
-静态域：存放在对象中static定义的静态成员。">
+静态域：存放在对象中static定义的静态成员。
+
+equals　Object 中euqals的源码如下。没有重写equals时，是直接用==判断的，而String中重写了equals方法。 
+ public boolean equals(Object obj) {">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java常见面试题">
 <meta property="og:url" content="http://codingmaster1.github.io/2016/05/24/java常见面试题/index.html">
 <meta property="og:site_name" content="Go Big or Go Home">
-<meta property="og:description" content="1.
-
+<meta property="og:description" content="内存
 堆区：用new创建的对象。
 栈区：函数中的临时变量，基本类型的数据和对象的引用，对象本身不放在栈区。
 字符串常量区：字符串。
-静态域：存放在对象中static定义的静态成员。">
-<meta property="og:updated_time" content="2016-05-24T13:59:30.774Z">
+静态域：存放在对象中static定义的静态成员。
+
+equals　Object 中euqals的源码如下。没有重写equals时，是直接用==判断的，而String中重写了equals方法。 
+ public boolean equals(Object obj) {">
+<meta property="og:image" content="http://i.imgur.com/oZaoJXa.png">
+<meta property="og:updated_time" content="2016-05-27T08:22:50.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java常见面试题">
-<meta name="twitter:description" content="1.
-
+<meta name="twitter:description" content="内存
 堆区：用new创建的对象。
 栈区：函数中的临时变量，基本类型的数据和对象的引用，对象本身不放在栈区。
 字符串常量区：字符串。
-静态域：存放在对象中static定义的静态成员。">
+静态域：存放在对象中static定义的静态成员。
+
+equals　Object 中euqals的源码如下。没有重写equals时，是直接用==判断的，而String中重写了equals方法。 
+ public boolean equals(Object obj) {">
+<meta name="twitter:image" content="http://i.imgur.com/oZaoJXa.png">
 
 
 
@@ -334,13 +342,62 @@
       
 
       
-        <p>1.</p>
-<ul>
+        <h1 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h1><ul>
 <li>堆区：用new创建的对象。</li>
 <li>栈区：函数中的临时变量，基本类型的数据和对象的引用，对象本身不放在栈区。</li>
 <li>字符串常量区：字符串。</li>
 <li>静态域：存放在对象中static定义的静态成员。</li>
 </ul>
+<h1 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h1><p>　Object 中euqals的源码如下。没有重写equals时，是直接用==判断的，而String中重写了equals方法。 </p>
+<pre><code> public boolean equals(Object obj) {
+    return (this == obj);
+}
+</code></pre><h1 id="接口和抽象类比较"><a href="#接口和抽象类比较" class="headerlink" title="接口和抽象类比较"></a>接口和抽象类比较</h1><p>　含有abstract修饰符的class即为抽象类，abstract类不能创建的实例对象。含有abstract方法的类必须定义为abstract class，abstract class类中的方法不必是抽象的。abstract class<br>类中定义抽象方法必须在具体<br>(Concrete)子类中实现，所以，不能有抽象构造方法或抽象静态方法。如果的子类没有实现抽象父类中的所有抽象方法，那么子类也必须定义为abstract类型。<br>接口（interface）可以说成是抽象类的一种特例，接口中的所有方法都必须是抽象的。接口中的方法定义默认为public abstract类型，接口中的成员变量类型默认为public static final。<br>下面比较一下两者的语法区别：<br>1.抽象类可以有构造方法，接口中不能有构造方法。<br>2.抽象类中可以有普通成员变量，接口中没有普通成员变量<br>3.抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。</p>
+<ol>
+<li>抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然<br>eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。</li>
+<li>抽象类中可以包含静态方法，接口中不能包含静态方法</li>
+<li>抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1>　Java锁的种类以及辨析 锁作为并发共享数据，保证一致性的工具，在JAVA平台有多种实现(如 synchronized 和 ReentrantLock等等 ) 。<h1 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h1>　　Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。<br>　Servlet运行于支持Java的应用服务器中。从原理上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。<br>　Servlet的生命周期分为5个阶段：加载、创建、初始化、处理客户请求、卸载。<br>(1)加载：容器通过类加载器使用servlet类对应的文件加载servlet<br>(2)创建：通过调用servlet构造函数创建一个servlet对象<br>(3)初始化：调用init方法初始化<br>(4)处理客户请求：每当有一个客户请求，容器会创建一个线程来处理客户请求<br>(5)卸载：调用destroy方法让servlet自己释放其占用的资源<h1 id="public-private-等修饰符"><a href="#public-private-等修饰符" class="headerlink" title="public  private 等修饰符"></a>public  private 等修饰符</h1>　public  private   不用说。都知道而default和protected老有人记不住。<br>只要记住protected一个特点是只要子类都能访问，不管在不在一个包。 　<br><img src="http://i.imgur.com/oZaoJXa.png" alt=""><h1 id="初始化过程"><a href="#初始化过程" class="headerlink" title="初始化过程"></a>初始化过程</h1></li>
+<li>初始化父类中的静态成员变量和静态代码块 ； </li>
+<li>初始化子类中的静态成员变量和静态代码块 ；</li>
+<li>初始化父类的普通成员变量和代码块，再执行父类的构造方法；</li>
+<li>初始化子类的普通成员变量和代码块，再执行子类的构造方法。</li>
+</ol>
+<h1 id="考察泛型通配符"><a href="#考察泛型通配符" class="headerlink" title="考察泛型通配符"></a>考察泛型通配符</h1><p>?:任意类型，如果没有明确，那么就是Object以及任意的Java类了<br>? extends E:向下限定，E及其子类<br>? super E:向上限定，E及其父类</p>
+<h1 id="Java多线程"><a href="#Java多线程" class="headerlink" title="Java多线程"></a>Java多线程</h1><p>Java中的多线程是一种抢占式的机制，而不是分时机制。抢占式的机制是有多个线程处于可运行状态，但是只有一个线程在运行。<br>共同点 ： </p>
+<ol>
+<li>他们都是在多线程的环境下，都可以在程序的调用处阻塞指定的毫秒数，并返回。 </li>
+<li>wait()和sleep()都可以通过interrupt()方法 打断线程的暂停状态 ，从而使线程立刻抛出InterruptedException。<br>如果线程A希望立即结束线程B，则可以对线程B对应的Thread实例调用interrupt方法。如果此刻线程B正在wait/sleep/join，则线程B会立刻抛出InterruptedException，在catch() {} 中直接return即可安全地结束线程。<br>需要注意的是，InterruptedException是线程自己从内部抛出的，并不是interrupt()方法抛出的。对某一线程调用 interrupt()时，如果该线程正在执行普通的代码，那么该线程根本就不会抛出InterruptedException。但是，一旦该线程进入到 wait()/sleep()/join()后，就会立刻抛出InterruptedException 。<br>不同点 ：<br>1.每个对象都有一个锁来控制同步访问。Synchronized关键字可以和对象的锁交互，来实现线程的同步。<br>sleep方法没有释放锁，而wait方法释放了锁，使得其他线程可以使用同步控制块或者方法。<br>2.wait，notify和notifyAll只能在同步控制方法或者同步控制块里面使用，而sleep可以在任何地方使用<br>3.sleep必须捕获异常，而wait，notify和notifyAll不需要捕获异常<br>4.sleep是线程类（Thread）的方法，导致此线程暂停执行指定时间，给执行机会给其他线程，但是监控状态依然保持，到时后会自动恢复。调用sleep不会释放对象锁。<br>5.wait是Object类的方法，对此对象调用wait方法导致本线程放弃对象锁，进入等待此对象的等待锁定池，只有针对此对象发出notify方法（或notifyAll）后本线程才进入对象锁定池准备获得对象锁进入运行状态。 <h1 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h1>无论如何finally语句都要执行<br>finally语句在try或catch中的return语句执行之后返回之前执行且finally里的修改语句不能影响try或catch中 return已经确定的返回值，若finally里也有return语句则覆盖try或catch中的return语句直接返回。<br>#反射机制 #<br>普通的java对象是通过new关键字把对应类的字节码文件加载到内存，然后创建该对象的。<br>反射是通过一个名为Class的特殊类，用Class.forName(“className”);得到类的字节码对象，然后用newInstance()方法在虚拟机内部构造这个对象（针对无参构造函数）。<br>也就是说反射机制让我们可以先拿到java类对应的字节码对象，然后动态的进行任何可能的操作，<br>包括</li>
+</ol>
+<ul>
+<li>在运行时判断任意一个对象所属的类</li>
+<li>在运行时构造任意一个类的对象</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法</li>
+<li>在运行时调用任意一个对象的方法 </li>
+</ul>
+<p>这些都是反射的功能。<br>使用反射的主要作用是方便程序的扩展。 </p>
+<h1 id="struts1和struts2的区别"><a href="#struts1和struts2的区别" class="headerlink" title="struts1和struts2的区别"></a>struts1和struts2的区别</h1><p>从action类上分析:<br>1.Struts1要求Action类继承一个抽象基类。Struts1的一个普遍问题是使用抽象类编程而不是接口。 </p>
+<ol>
+<li>Struts 2 Action类可以实现一个Action接口，也可实现其他接口，使可选和定制的服务成为可能。Struts2提供一个ActionSupport基类去实现常用的接口。Action接口不是必须的，任何有execute标识的POJO对象都可以用作Struts2的Action对象。<br>从Servlet 依赖分析: </li>
+<li>Struts1 Action 依赖于Servlet API ,因为当一个Action被调用时HttpServletRequest 和 HttpServletResponse 被传递给execute方法。 </li>
+<li>Struts 2 Action不依赖于容器，允许Action脱离容器单独被测试。如果需要，Struts2 Action仍然可以访问初始的request和response。但是，其他的元素减少或者消除了直接访问HttpServetRequest 和 HttpServletResponse的必要性。<br>从action线程模式分析: </li>
+<li>Struts1 Action是单例模式并且必须是线程安全的，因为仅有Action的一个实例来处理所有的请求。单例策略限制了Struts1 Action能作的事，并且要在开发时特别小心。Action资源必须是线程安全的或同步的。 </li>
+<li><p>Struts2 Action对象为每一个请求产生一个实例，因此没有线程安全问题。（实际上，servlet容器给每个请求产生许多可丢弃的对象，并且不会导致性能和垃圾回收问题）</p>
+<h1 id="静态内部类与非静态内部类"><a href="#静态内部类与非静态内部类" class="headerlink" title="静态内部类与非静态内部类"></a>静态内部类与非静态内部类</h1><p>内部类其实和类的属性没什么区别，只是在声明的时候必须是Outer.Inner a，就像int a 一样，至于静态内部类和非静态内部类new的时候有点区别，Outer.Inner a=new Outer().new Inner()（非静态，先有Outer对象才能有属性） Outer.Inner a=new Outer.Inner()要把Outer.Inner看成一部分，就像类变量一样</p>
+<p> public class Enclosingone {</p>
+<pre><code>//非静态内部类
+public class InsideOne {}
+//静态内部类
+public static class InsideTwo{}
+</code></pre><p> }</p>
+<p> class Mytest02{</p>
+<pre><code>public static void main(String args []){
+    Enclosingone.InsideOne obj1 = new Enclosingone().new InsideOne();//非静态内部类对象
+    Enclosingone.InsideTwo obj2 = new Enclosingone.InsideTwo();//静态内部类对象
+}
+</code></pre><p> }</p>
+<h1 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h1><p>Iterator  支持从源集合中安全地删除对象，只需在 Iterator 上调用 remove() 即可。这样做的好处是可以避免 ConcurrentModifiedException ，当打开 Iterator 迭代集合时，同时又在对集合进行修改。有些集合不允许在迭代时删除或添加元素，但是调用 Iterator 的remove() 方法是个安全的做法。<br>如果在循环的过程中调用集合的remove()方法，就会导致循环出错，例如：<br>for(int i=0;i&lt;list.size();i++){<br> list.remove(…);<br>}<br>循环过程中list.size()的大小变化了，就导致了错误。<br>所以，如果你想在循环语句中删除集合中的某个元素，就要用迭代器iterator的remove()方法，因为它的remove()方法不仅会删除元素，还会维护一个标志，用来记录目前是不是可删除状态，例如，你不能连续两次调用它的remove()方法，调用之前至少有一次next()方法的调用。</p>
+</li>
+</ol>
 
       
     </div>
@@ -492,7 +549,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -558,7 +615,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存"><span class="nav-number">1.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#equals"><span class="nav-number">2.</span> <span class="nav-text">equals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口和抽象类比较"><span class="nav-number">3.</span> <span class="nav-text">接口和抽象类比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁"><span class="nav-number">4.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet"><span class="nav-number">5.</span> <span class="nav-text">Servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#public-private-等修饰符"><span class="nav-number">6.</span> <span class="nav-text">public  private 等修饰符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化过程"><span class="nav-number">7.</span> <span class="nav-text">初始化过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#考察泛型通配符"><span class="nav-number">8.</span> <span class="nav-text">考察泛型通配符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java多线程"><span class="nav-number">9.</span> <span class="nav-text">Java多线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#finally"><span class="nav-number">10.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#struts1和struts2的区别"><span class="nav-number">11.</span> <span class="nav-text">struts1和struts2的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态内部类与非静态内部类"><span class="nav-number">12.</span> <span class="nav-text">静态内部类与非静态内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterator"><span class="nav-number">13.</span> <span class="nav-text">Iterator</span></a></li></ol></div>
             
           </div>
         </section>

@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -80,15 +80,34 @@
 
 
 
-<meta name="description" content="Keep Moving">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Go Big or Go Home">
-<meta property="og:url" content="http://codingmaster1.github.io/tags/Linux命令/index.html">
+<meta name="description" content="插入排序public void InsertSort(int[] a){
+    int temp;
+    for(int i=1;i&amp;lt;a.length;i++){
+            temp=a[i];
+            int j=i-1;
+            while(j&amp;gt;=0&amp;amp;&amp;amp;temp&amp;lt;a[j]){
+                a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java常用排序算法">
+<meta property="og:url" content="http://codingmaster1.github.io/2016/05/25/Java常用排序算法/index.html">
 <meta property="og:site_name" content="Go Big or Go Home">
-<meta property="og:description" content="Keep Moving">
+<meta property="og:description" content="插入排序public void InsertSort(int[] a){
+    int temp;
+    for(int i=1;i&amp;lt;a.length;i++){
+            temp=a[i];
+            int j=i-1;
+            while(j&amp;gt;=0&amp;amp;&amp;amp;temp&amp;lt;a[j]){
+                a">
+<meta property="og:updated_time" content="2016-05-27T06:57:54.687Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go Big or Go Home">
-<meta name="twitter:description" content="Keep Moving">
+<meta name="twitter:title" content="Java常用排序算法">
+<meta name="twitter:description" content="插入排序public void InsertSort(int[] a){
+    int temp;
+    for(int i=1;i&amp;lt;a.length;i++){
+            temp=a[i];
+            int j=i-1;
+            while(j&amp;gt;=0&amp;amp;&amp;amp;temp&amp;lt;a[j]){
+                a">
 
 
 
@@ -106,7 +125,7 @@
   };
 </script>
 
-  <title> 标签: Linux命令 | Go Big or Go Home </title>
+  <title> Java常用排序算法 | Go Big or Go Home </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -127,7 +146,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,46 +264,217 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Linux命令
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java常用排序算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-25T20:37:44+08:00" content="2016-05-25">
+              2016-05-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/25/Java常用排序算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/25/Java常用排序算法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
+      
+        <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><pre><code>public void InsertSort(int[] a){
+    int temp;
+    for(int i=1;i&lt;a.length;i++){
+            temp=a[i];
+            int j=i-1;
+            while(j&gt;=0&amp;&amp;temp&lt;a[j]){
+                a[j+1]=a[j];
+                 --j;    
+             }
+            a[j+1]=temp;
+        }    
+}
+</code></pre><h1 id="交换类排序"><a href="#交换类排序" class="headerlink" title="交换类排序"></a>交换类排序</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><pre><code>    public void sort(int a[]){
+    int temp;
+    for(int i=0;i&lt;a.length-1;i++){
+        for(int j=0;j&lt;(a.length-1-i);j++){
+        if(a[j]&gt;a[j+1]){
+            temp=a[j];
+            a[j]=a[j+1];
+            a[j+1]=temp;
+        }
+        }
+    }
+}
+</code></pre><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><pre><code>public void QuickSort(int[] a,int r,int l){
+   int i=r,j=r;
+   int temp;
+   if(l&lt;r){
+    temp=a[l];
+    while(i!=j){
+        while(i&lt;j&amp;&amp;temp&gt;a[j]) j--;
+        if(i&lt;j){
+            a[i]=a[j];
+            i++;
+            }
+        while(i&lt;j&amp;&amp;temp&lt;a[i]) ++i;
+        if(i&lt;j){
+            a[j]=a[i];
+            --j;
+            }
+        }
+       a[i]=temp;
+        QuickSort(a,l,i-1);
+        QuickSort(a,i+1,r);
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/05/02/Linux命令/" itemprop="url">
-              
-                <span itemprop="name">Linux命令</span>
-              
-            </a>
-        
-      </h1>
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.png" alt="Austin wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-05-02T17:22:03+08:00"
-              content="2016-05-02" >
-          05-02
-        </time>
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward.png" alt="Austin Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
       </div>
+    
+  </div>
+</div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/25/HashMap与HashTable/" rel="next" title="HashMap与HashTable">
+                <i class="fa fa-chevron-left"></i> HashMap与HashTable
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/05/25/Java常用排序算法/"
+     data-title="Java常用排序算法"
+     data-content=""
+     data-url="http://codingmaster1.github.io/2016/05/25/Java常用排序算法/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -292,6 +482,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/25/Java常用排序算法/"
+           data-title="Java常用排序算法" data-url="http://codingmaster1.github.io/2016/05/25/Java常用排序算法/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -311,8 +509,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -382,6 +589,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">1.</span> <span class="nav-text">插入排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交换类排序"><span class="nav-number"></span> <span class="nav-text">交换类排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">2.</span> <span class="nav-text">快速排序</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -501,6 +719,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
