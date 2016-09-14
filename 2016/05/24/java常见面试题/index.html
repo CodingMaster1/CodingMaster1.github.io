@@ -101,7 +101,7 @@ equals　Object 中euqals的源码如下。没有重写equals时，是直接用=
 equals　Object 中euqals的源码如下。没有重写equals时，是直接用==判断的，而String中重写了equals方法。 
  public boolean equals(Object obj) {">
 <meta property="og:image" content="http://i.imgur.com/oZaoJXa.png">
-<meta property="og:updated_time" content="2016-05-27T08:22:50.244Z">
+<meta property="og:updated_time" content="2016-05-27T12:18:31.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java常见面试题">
 <meta name="twitter:description" content="内存
@@ -396,8 +396,21 @@ public static class InsideTwo{}
 }
 </code></pre><p> }</p>
 <h1 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h1><p>Iterator  支持从源集合中安全地删除对象，只需在 Iterator 上调用 remove() 即可。这样做的好处是可以避免 ConcurrentModifiedException ，当打开 Iterator 迭代集合时，同时又在对集合进行修改。有些集合不允许在迭代时删除或添加元素，但是调用 Iterator 的remove() 方法是个安全的做法。<br>如果在循环的过程中调用集合的remove()方法，就会导致循环出错，例如：<br>for(int i=0;i&lt;list.size();i++){<br> list.remove(…);<br>}<br>循环过程中list.size()的大小变化了，就导致了错误。<br>所以，如果你想在循环语句中删除集合中的某个元素，就要用迭代器iterator的remove()方法，因为它的remove()方法不仅会删除元素，还会维护一个标志，用来记录目前是不是可删除状态，例如，你不能连续两次调用它的remove()方法，调用之前至少有一次next()方法的调用。</p>
+<h1 id="start和run方法"><a href="#start和run方法" class="headerlink" title="start和run方法"></a>start和run方法</h1><p>两种方法的区别:<br>1.start方法</p>
+<pre><code>用 start方法来启动线程，是真正实现了多线程， 通过调用Thread类的start()方法来启动一个线程，这时此线程处于就绪（可运行）状态，并没有运行，一旦得到cpu时间片，就开始执行run()方法。但要注意的是，此时无需等待run()方法执行完毕，即可继续执行下面的代码。所以run()方法并没有实现多线程。
+</code></pre><p> 2.run方法</p>
+<pre><code>run()方法只是类的一个普通方法而已，如果直接调用Run方法，程序中依然只有主线程这一个线程，其程序执行路径还是只有一条，还是要顺序执行，还是要等待run方法体执行完毕后才可继续执行下面的代码。
+</code></pre><h1 id="静态块和构造块"><a href="#静态块和构造块" class="headerlink" title="静态块和构造块"></a>静态块和构造块</h1><p>静态块：用static申明，JVM加载类时执行，仅执行一次<br>构造块：类中直接用{}定义，每一次创建对象时执行<br>执行顺序优先级：静态块&gt;main()&gt;构造块&gt;构造方法<br>静态块按照申明顺序执行，所以先执行publicstaticB t1 = newB();该语句创建对象，则又会调用构造块，输出构造块<br>接着执行public static B t1 = new B();输出构造块<br>再执行<br>static<br>{<br>System.out.println(“静态块”);<br>}输出静态块<br>最后main方法执行，创建对象，输出构造块。 </p>
+<h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><p>一旦一个共享变量（类的成员变量、类的静态成员变量）被volatile修饰之后，那么就具备了两层语义：</p>
 </li>
 </ol>
+<p>1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。</p>
+<p>2）禁止进行指令重排序。</p>
+<p>volatile只提供了保证访问该变量时，每次都是从内存中读取最新值，并不会使用寄存器缓存该值——每次都会从内存中读取。</p>
+<p>而对该变量的修改，volatile并不提供原子性的保证。</p>
+<p>由于及时更新，很可能导致另一线程访问最新变量值，无法跳出循环的情况</p>
+<p>多线程下计数器必须使用锁保护。 </p>
+<h1 id="Java中的数据类型分类："><a href="#Java中的数据类型分类：" class="headerlink" title="Java中的数据类型分类："></a>Java中的数据类型分类：</h1><p>基本数据类型（或叫做原生类、内置类型）8种：<br>整数：byte，short，int，long（默认是int型）<br>浮点类型： float，double（默认是double型）<br>字符类型：char<br>布尔类型：boolean<br>引用数据类型3种：数组，类，接口<br>其中，基本数据类型之间除了boolean，其他数据类型之间可以任意的相互转换（强制转化或默认转换），这个与c++中有点区别。<br>个人认为c定义数组的方式是正确的，只不过少了一个分号。java中定义数组有两种方式，一种是int[ ] number，一种是int  number[ ]，推荐第一种，可读性更高。</p>
 
       
     </div>
@@ -549,7 +562,7 @@ public static class InsideTwo{}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -615,7 +628,7 @@ public static class InsideTwo{}
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存"><span class="nav-number">1.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#equals"><span class="nav-number">2.</span> <span class="nav-text">equals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口和抽象类比较"><span class="nav-number">3.</span> <span class="nav-text">接口和抽象类比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁"><span class="nav-number">4.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet"><span class="nav-number">5.</span> <span class="nav-text">Servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#public-private-等修饰符"><span class="nav-number">6.</span> <span class="nav-text">public  private 等修饰符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化过程"><span class="nav-number">7.</span> <span class="nav-text">初始化过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#考察泛型通配符"><span class="nav-number">8.</span> <span class="nav-text">考察泛型通配符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java多线程"><span class="nav-number">9.</span> <span class="nav-text">Java多线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#finally"><span class="nav-number">10.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#struts1和struts2的区别"><span class="nav-number">11.</span> <span class="nav-text">struts1和struts2的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态内部类与非静态内部类"><span class="nav-number">12.</span> <span class="nav-text">静态内部类与非静态内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterator"><span class="nav-number">13.</span> <span class="nav-text">Iterator</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存"><span class="nav-number">1.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#equals"><span class="nav-number">2.</span> <span class="nav-text">equals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口和抽象类比较"><span class="nav-number">3.</span> <span class="nav-text">接口和抽象类比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁"><span class="nav-number">4.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet"><span class="nav-number">5.</span> <span class="nav-text">Servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#public-private-等修饰符"><span class="nav-number">6.</span> <span class="nav-text">public  private 等修饰符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化过程"><span class="nav-number">7.</span> <span class="nav-text">初始化过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#考察泛型通配符"><span class="nav-number">8.</span> <span class="nav-text">考察泛型通配符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java多线程"><span class="nav-number">9.</span> <span class="nav-text">Java多线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#finally"><span class="nav-number">10.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#struts1和struts2的区别"><span class="nav-number">11.</span> <span class="nav-text">struts1和struts2的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态内部类与非静态内部类"><span class="nav-number">12.</span> <span class="nav-text">静态内部类与非静态内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterator"><span class="nav-number">13.</span> <span class="nav-text">Iterator</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#start和run方法"><span class="nav-number">14.</span> <span class="nav-text">start和run方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态块和构造块"><span class="nav-number">15.</span> <span class="nav-text">静态块和构造块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">16.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的数据类型分类："><span class="nav-number">17.</span> <span class="nav-text">Java中的数据类型分类：</span></a></li></ol></div>
             
           </div>
         </section>
